@@ -13,6 +13,7 @@
 
     <ItemGroup>
       <Folder Include="CartManagement\DomainEvents\" />
+      <Folder Include="DomainServices\" />
     </ItemGroup>
 
 </Project>
