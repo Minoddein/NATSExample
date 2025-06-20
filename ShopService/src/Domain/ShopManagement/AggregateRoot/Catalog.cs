@@ -3,7 +3,7 @@ using Domain.Shared;
 using Domain.ShopManagement.DomainEvents;
 using Domain.ShopManagement.Entities;
 
-namespace Domain.ShopManagement.Aggregate;
+namespace Domain.ShopManagement.AggregateRoot;
 
 public sealed class Catalog: DomainEntity
 {

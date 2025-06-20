@@ -2,7 +2,7 @@
 using Domain.CartManagement.Entities;
 using Domain.Shared;
 
-namespace Domain.CartManagement.Aggregate;
+namespace Domain.CartManagement.AggregateRoot;
 
 public sealed class Cart: DomainEntity
 {
