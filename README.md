@@ -9,6 +9,11 @@
 
 </details>
 
+## Схема БД
+
+![image](https://github.com/user-attachments/assets/0338aba8-8a42-4656-9d03-c63c6cb89ccd)
+
+
 </details>
 
 
