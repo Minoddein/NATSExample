@@ -1,11 +1,13 @@
-﻿using Domain.CartManagement.AggregateRoot;
-using Domain.ShopManagement.AggregateRoot;
+﻿using Domain.CartAggregate.AggregateRoot;
+using Domain.ProductAggregate.AggregateRoot;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 namespace Infrastructure;
 
+//TODO: в дальнейшем разделить на write/read contexts cqrs
+// Также спецификация
 public class ShopDbContext(IConfiguration configuration): DbContext
 {
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -1,6 +1,6 @@
 ﻿using CSharpFunctionalExtensions;
 
-namespace Domain.ShopManagement.Entities;
+namespace Domain.ProductAggregate.Entities;
 
 // Упрощаем до того, что у продукта нет производителя, продавца
 // И создание нового такого же продукта, проверяется по имени и суммируется на складе соответственно

@@ -1,7 +1,6 @@
 ﻿using CSharpFunctionalExtensions;
-using Domain.ShopManagement.Entities;
 
-namespace Domain.CartManagement.Entities;
+namespace Domain.CartAggregate.Entities;
 
 public sealed class CartItem : Entity<Guid>
 {

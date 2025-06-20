@@ -1,8 +1,8 @@
-﻿using Domain.CartManagement.DomainEvents;
-using Domain.CartManagement.Entities;
+﻿using Domain.CartAggregate.DomainEvents;
+using Domain.CartAggregate.Entities;
 using Domain.Shared;
 
-namespace Domain.CartManagement.AggregateRoot;
+namespace Domain.CartAggregate.AggregateRoot;
 
 public sealed class Cart: DomainEntity
 {

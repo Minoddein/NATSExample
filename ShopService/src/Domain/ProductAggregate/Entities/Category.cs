@@ -1,8 +1,7 @@
-﻿using CSharpFunctionalExtensions;
+﻿using Domain.ProductAggregate.DomainEvents;
 using Domain.Shared;
-using Domain.ShopManagement.DomainEvents;
 
-namespace Domain.ShopManagement.Entities;
+namespace Domain.ProductAggregate.Entities;
 
 public sealed class Category: DomainEntity
 {

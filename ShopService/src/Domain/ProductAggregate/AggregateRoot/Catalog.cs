@@ -1,9 +1,9 @@
 ﻿using CSharpFunctionalExtensions;
+using Domain.ProductAggregate.DomainEvents;
+using Domain.ProductAggregate.Entities;
 using Domain.Shared;
-using Domain.ShopManagement.DomainEvents;
-using Domain.ShopManagement.Entities;
 
-namespace Domain.ShopManagement.AggregateRoot;
+namespace Domain.ProductAggregate.AggregateRoot;
 
 public sealed class Catalog: DomainEntity
 {

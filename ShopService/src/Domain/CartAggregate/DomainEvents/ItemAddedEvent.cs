@@ -1,5 +1,5 @@
 ﻿using Domain.Shared;
 
-namespace Domain.CartManagement.DomainEvents;
+namespace Domain.CartAggregate.DomainEvents;
 
 public record ItemAddedEvent(): IDomainEvent;

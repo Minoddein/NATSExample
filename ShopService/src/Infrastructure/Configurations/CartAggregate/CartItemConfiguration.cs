@@ -1,4 +1,4 @@
-﻿using Domain.CartManagement.Entities;
+﻿using Domain.CartAggregate.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

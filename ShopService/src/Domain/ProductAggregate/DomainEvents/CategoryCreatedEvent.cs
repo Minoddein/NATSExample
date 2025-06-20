@@ -1,5 +1,5 @@
 ﻿using Domain.Shared;
 
-namespace Domain.ShopManagement.DomainEvents;
+namespace Domain.ProductAggregate.DomainEvents;
 
 public record CategoryCreatedEvent(Guid CategoryId) : IDomainEvent;

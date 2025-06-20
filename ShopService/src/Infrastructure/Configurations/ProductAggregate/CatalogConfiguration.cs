@@ -1,4 +1,4 @@
-﻿using Domain.ShopManagement.AggregateRoot;
+﻿using Domain.ProductAggregate.AggregateRoot;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

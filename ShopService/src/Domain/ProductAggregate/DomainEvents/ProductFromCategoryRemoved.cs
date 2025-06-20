@@ -1,5 +1,5 @@
 ﻿using Domain.Shared;
 
-namespace Domain.ShopManagement.DomainEvents;
+namespace Domain.ProductAggregate.DomainEvents;
 
 public record ProductFromCategoryRemoved(Guid CategoryId, Guid ProductId) : IDomainEvent;

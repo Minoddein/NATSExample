@@ -1,6 +1,6 @@
 ﻿using CSharpFunctionalExtensions;
-using Domain.CartManagement.AggregateRoot;
-using Domain.ShopManagement.AggregateRoot;
+using Domain.CartAggregate.AggregateRoot;
+using Domain.ProductAggregate.AggregateRoot;
 
 namespace Domain.DomainServices;
 
