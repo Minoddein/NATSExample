@@ -45,14 +45,14 @@ public sealed class Catalog: DomainEntity
         AddEvent(@event);
     }
     
-    public void AddProduct(Product product)
+    public Result AddProduct(Product product)
     {
-        var isExistProduct = _products.FirstOrDefault(p => p.Id == product.Id);
+        var isExistProduct = _products.FirstOrDefault(p => p.Name == product.Name);
 
         if (isExistProduct is not null)
         {
             isExistProduct.AddQuantity(product.Stock);
-            return;
+            return Result.Failure("Product already exists");
         }
         
         _products.Add(product);
@@ -60,6 +60,8 @@ public sealed class Catalog: DomainEntity
         var @event = new ProductCreatedEvent(product.Id);
 
         AddEvent(@event);
+        
+        return Result.Success();
     }
 
     public void ReduceProduct(Product product, int quantity)

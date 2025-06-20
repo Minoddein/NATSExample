@@ -11,6 +11,8 @@ public class ProductConfiguration: IEntityTypeConfiguration<Product>
         builder.ToTable("products");
 
         builder.HasKey(c => c.Id);
+        
+        builder.Property<Guid>("catalog_id");
 
         builder.Property(c => c.Name)
             .HasMaxLength(1000)

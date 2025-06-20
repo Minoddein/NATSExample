@@ -16,7 +16,10 @@ public class CatalogRepository(ShopDbContext context) : ICatalogRepository
 
     public async Task<Catalog?> GetCatalog(Guid id, CancellationToken cancellation = default)
     {
-        var catalog = await context.Catalogs.FirstOrDefaultAsync(c => c.Id == id, cancellation);
+        var catalog = await context.Catalogs
+            .Include(c => c.Products)
+            .AsTracking()
+            .FirstOrDefaultAsync(c => c.Id == id, cancellation);
 
         return catalog;
     }
@@ -29,11 +32,11 @@ public class CatalogRepository(ShopDbContext context) : ICatalogRepository
     {
         return await context.Catalogs
             .Where(c => c.Id == id)
-            .SelectMany(c => c.Products) 
-            .OrderBy(p => p.Id)         
+            .SelectMany(c => c.Products)
+            .OrderBy(p => p.Id)
             .Skip((pageNumber - 1) * pageSize)
             .Take(pageSize)
-            .AsNoTracking()             
+            .AsNoTracking()
             .ToListAsync(cancellation);
     }
 
@@ -45,12 +48,20 @@ public class CatalogRepository(ShopDbContext context) : ICatalogRepository
     {
         return await context.Catalogs
             .Where(c => c.Id == id)
-            .SelectMany(c => c.Categories) 
-            .OrderBy(c => c.Id)           
+            .SelectMany(c => c.Categories)
+            .OrderBy(c => c.Id)
             .Skip((pageNumber - 1) * pageSize)
             .Take(pageSize)
-            .AsNoTracking()               
+            .AsNoTracking()
             .ToListAsync(cancellation);
+    }
+
+    public Task Attach(Catalog catalog, CancellationToken cancellation = default)
+    {
+        context.Attach(catalog);
+        context.Entry(catalog).State = EntityState.Modified;
+
+        return Task.CompletedTask;
     }
 
     public async Task<List<Product>> GetProductsByCategories(Guid id,
@@ -65,7 +76,7 @@ public class CatalogRepository(ShopDbContext context) : ICatalogRepository
             .Where(c => c.Id == id)
             .SelectMany(c => c.Products
                 .Where(p => p.Categories.Any(categoryId => categoryIdsList.Contains(categoryId)))
-                .OrderBy(p => p.Id) 
+                .OrderBy(p => p.Id)
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize))
             .AsNoTracking();

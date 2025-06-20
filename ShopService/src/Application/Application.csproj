@@ -7,7 +7,11 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="FluentValidation" Version="12.0.0" />
+      <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.0.0" />
       <PackageReference Include="MediatR" Version="12.5.0" />
+      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.6" />
+      <PackageReference Include="Scrutor" Version="6.1.0" />
     </ItemGroup>
 
     <ItemGroup>
@@ -15,10 +19,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Cart\Commands\" />
-      <Folder Include="Cart\Queries\" />
-      <Folder Include="Product\Commands\" />
-      <Folder Include="Product\Queries\" />
+      <Folder Include="Features\Cart\Queries\GetItemsFromCart\" />
+      <Folder Include="Features\Product\Commands\AddCategoryToProduct\" />
+      <Folder Include="Features\Product\Commands\CreateCategory\" />
+      <Folder Include="Features\Product\Queries\GetProductsByCategories\" />
+      <Folder Include="Features\Product\Queries\GetProductsWithPagination\" />
     </ItemGroup>
 
 </Project>

@@ -19,11 +19,19 @@ public class CatalogConfiguration: IEntityTypeConfiguration<Catalog>
         builder.HasMany(c => c.Products)
             .WithOne()
             .HasForeignKey("catalog_id")
+            .IsRequired()
             .OnDelete(DeleteBehavior.Cascade);
         
         builder.HasMany(c => c.Categories)
             .WithOne()
             .HasForeignKey("catalog_id")
+            .IsRequired()
             .OnDelete(DeleteBehavior.Cascade);
+        
+        builder.Metadata.FindNavigation(nameof(Catalog.Products))
+            ?.SetPropertyAccessMode(PropertyAccessMode.Field);
+        
+        builder.Metadata.FindNavigation(nameof(Catalog.Categories))
+            ?.SetPropertyAccessMode(PropertyAccessMode.Field);
     }
 }

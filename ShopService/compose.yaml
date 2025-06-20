@@ -6,6 +6,16 @@
       dockerfile: src/Presentation/Dockerfile
     networks:
       - shop-service
+  nats-server:
+    image: nats:latest
+    container_name: nats-server
+    ports:
+      - "4222:4222"     
+      - "6222:6222"     
+      - "8222:8222"     
+    command:
+      - "--js"           
+    restart: unless-stopped
   
   postgres:
     container_name: postgres
