@@ -63,4 +63,9 @@ public sealed class Product : Entity<Guid>
     {
         Stock += quantity;
     }
+
+    public void Reduce(int quantity)
+    {
+        Stock -= quantity;
+    }
 }

@@ -47,7 +47,7 @@ public sealed class Catalog: DomainEntity
     
     public void AddProduct(Product product)
     {
-        var isExistProduct = _products.FirstOrDefault(p => p.Name == product.Name);
+        var isExistProduct = _products.FirstOrDefault(p => p.Id == product.Id);
 
         if (isExistProduct is not null)
         {
@@ -60,6 +60,13 @@ public sealed class Catalog: DomainEntity
         var @event = new ProductCreatedEvent(product.Id);
 
         AddEvent(@event);
+    }
+
+    public void ReduceProduct(Product product, int quantity)
+    {
+        var isExistProduct = _products.FirstOrDefault(p => p.Id == product.Id);
+
+        isExistProduct?.Reduce(quantity);
     }
 
     public Result RemoveCategory(Category category)

@@ -1,4 +1,5 @@
-﻿using Domain.CartManagement.Entities;
+﻿using Domain.CartManagement.DomainEvents;
+using Domain.CartManagement.Entities;
 using Domain.Shared;
 
 namespace Domain.CartManagement.Aggregate;
@@ -46,13 +47,17 @@ public sealed class Cart: DomainEntity
 
     public void RemoveItem(CartItem item)
     {
+        var isExist = _items.FirstOrDefault(i => i.Id == item.Id);
         
+        isExist?.Reduce();
     }
 
     public void ClearAllTheItems(CartItem item)
     {
-        
+        var isExist = _items.FirstOrDefault(i => i.Id == item.Id);
+        if (isExist is not null)
+        {
+            _items.Remove(isExist);
+        }
     }
 }
-
-public record ItemAddedEvent(): IDomainEvent;
