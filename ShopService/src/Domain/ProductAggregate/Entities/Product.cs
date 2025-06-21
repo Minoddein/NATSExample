@@ -65,6 +65,16 @@ public class Product : Entity<Guid>
     public int Stock { get; private set; }
     public IReadOnlyList<Guid> Categories => _categories;
 
+    public void AddCategory(Guid categoryId)
+    {
+        _categories.Add(categoryId);
+    }
+    
+    public void RemoveCategory(Guid categoryId)
+    {
+        _categories.Remove(categoryId);
+    }
+
     public void AddQuantity(int quantity)
     {
         Stock += quantity;

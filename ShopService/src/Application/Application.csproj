@@ -20,8 +20,6 @@
 
     <ItemGroup>
       <Folder Include="Features\Cart\Queries\GetItemsFromCart\" />
-      <Folder Include="Features\Product\Commands\AddCategoryToProduct\" />
-      <Folder Include="Features\Product\Commands\CreateCategory\" />
       <Folder Include="Features\Product\Queries\GetProductsByCategories\" />
       <Folder Include="Features\Product\Queries\GetProductsWithPagination\" />
     </ItemGroup>

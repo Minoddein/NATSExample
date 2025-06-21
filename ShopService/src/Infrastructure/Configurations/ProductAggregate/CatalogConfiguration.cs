@@ -27,8 +27,5 @@ public class CatalogConfiguration: IEntityTypeConfiguration<Catalog>
             .HasForeignKey("catalog_id")
             .IsRequired()
             .OnDelete(DeleteBehavior.Cascade);
-        
-        builder.Metadata.FindNavigation(nameof(Catalog.Products))
-            ?.SetPropertyAccessMode(PropertyAccessMode.Field);
     }
 }

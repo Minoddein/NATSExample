@@ -33,12 +33,32 @@ public class Catalog: DomainEntity
     public IReadOnlyList<Category> Categories => _categories;
     public IReadOnlyList<Product> Products => _products;
 
-    public void AddCategory(Category category)
+    public Result AddCategoryToProduct(Guid productId, Guid categoryId)
+    {
+        var category = _categories.FirstOrDefault(c => c.Id == categoryId);
+        if (category == null)
+        {
+            return Result.Failure("Category not found");
+        }
+        
+        var product = _products.FirstOrDefault(p => p.Id == productId);
+        if (product == null)
+        {
+            return Result.Failure("Product not found");
+        }
+        
+        category.AddProduct(productId);
+        product.AddCategory(categoryId);
+        
+        return Result.Success();
+    }
+    
+    public Result AddCategory(Category category)
     {
         var isExist =  _categories.Any(c => c.Name == category.Name);
         if (isExist)
         {
-            return;
+            return Result.Failure("Category already exists");
         }
         
         _categories.Add(category);
@@ -46,6 +66,8 @@ public class Catalog: DomainEntity
         var @event = new CategoryCreatedEvent(category.Id);
 
         AddEvent(@event);
+        
+        return Result.Success();
     }
     
     public Result AddProduct(Product product)
