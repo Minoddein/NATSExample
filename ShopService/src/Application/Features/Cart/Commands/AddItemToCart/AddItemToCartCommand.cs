@@ -1,6 +1,6 @@
-﻿namespace Application.Features.Cart.Commands.AddItemToCart;
+﻿using CSharpFunctionalExtensions;
+using MediatR;
 
-public class AddItemToCartCommand
-{
-    
-}
+namespace Application.Features.Cart.Commands.AddItemToCart;
+
+public record AddItemToCartCommand(Guid UserId, Guid ProductId, int Quantity) :  IRequest<Result>;

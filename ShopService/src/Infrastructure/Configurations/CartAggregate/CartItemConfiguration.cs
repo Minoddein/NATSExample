@@ -11,6 +11,8 @@ public class CartItemConfiguration: IEntityTypeConfiguration<CartItem>
         builder.ToTable("cart_items");
 
         builder.HasKey(c => c.Id);
+        
+        builder.Property(c => c.Id).ValueGeneratedNever();
 
         builder.Property(c => c.DateCreated)
             .HasColumnName("date_created");

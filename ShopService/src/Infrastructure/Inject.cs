@@ -15,6 +15,8 @@ public static class Inject
             .AddRepositories()
             .AddDatabase();
 
+        services.AddTransient<IDateTimeProvider, DateTimeProvider>();
+
         return services;
     }
 
