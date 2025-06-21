@@ -13,7 +13,7 @@ public interface ICatalogRepository
 
     Task<List<Category>> GetCategories(Guid id, int pageNumber, int pageSize, CancellationToken cancellation = default);
     
-    Task Attach(Catalog catalog, CancellationToken cancellation = default);
+    Task Attach<T>(T entry, CancellationToken cancellation = default);
 
     Task<List<Product>> GetProductsByCategories(
         Guid id,

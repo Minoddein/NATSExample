@@ -30,8 +30,5 @@ public class CatalogConfiguration: IEntityTypeConfiguration<Catalog>
         
         builder.Metadata.FindNavigation(nameof(Catalog.Products))
             ?.SetPropertyAccessMode(PropertyAccessMode.Field);
-        
-        builder.Metadata.FindNavigation(nameof(Catalog.Categories))
-            ?.SetPropertyAccessMode(PropertyAccessMode.Field);
     }
 }

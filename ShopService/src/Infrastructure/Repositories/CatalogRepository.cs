@@ -18,6 +18,7 @@ public class CatalogRepository(ShopDbContext context) : ICatalogRepository
     {
         var catalog = await context.Catalogs
             .Include(c => c.Products)
+            .Include(c => c.Categories)
             .AsTracking()
             .FirstOrDefaultAsync(c => c.Id == id, cancellation);
 
@@ -56,10 +57,15 @@ public class CatalogRepository(ShopDbContext context) : ICatalogRepository
             .ToListAsync(cancellation);
     }
 
-    public Task Attach(Catalog catalog, CancellationToken cancellation = default)
+    public Task Attach<T>(T entry, CancellationToken cancellation = default)
     {
-        context.Attach(catalog);
-        context.Entry(catalog).State = EntityState.Modified;
+        if (entry is null)
+        {
+            return Task.CompletedTask;
+        }
+        
+        context.Attach(entry);
+        context.Entry(entry).State = EntityState.Modified;
 
         return Task.CompletedTask;
     }

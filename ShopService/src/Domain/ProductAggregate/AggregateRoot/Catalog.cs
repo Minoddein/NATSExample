@@ -5,10 +5,13 @@ using Domain.Shared;
 
 namespace Domain.ProductAggregate.AggregateRoot;
 
-public sealed class Catalog: DomainEntity
+public class Catalog: DomainEntity
 {
     private readonly List<Category> _categories = [];
     private readonly List<Product> _products = [];
+    
+    // Ef core
+    private Catalog(){}
     
     public Catalog(Guid id, string name)
     {
@@ -100,7 +103,7 @@ public sealed class Catalog: DomainEntity
 
         var categories = _categories.Where(c => c.Products.Contains(product.Id)).ToList();
         
-        categories.ForEach(c => RemoveProduct(product));
+        categories.ForEach(c => c.RemoveProduct(product.Id));
         
         var @event = new ProductRemovedEvent(product.Id);
         

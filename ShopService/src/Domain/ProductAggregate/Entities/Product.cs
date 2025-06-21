@@ -4,18 +4,24 @@ namespace Domain.ProductAggregate.Entities;
 
 // Упрощаем до того, что у продукта нет производителя, продавца
 // И создание нового такого же продукта, проверяется по имени и суммируется на складе соответственно
-public sealed class Product : Entity<Guid>
+public class Product : Entity<Guid>
 {
     private readonly List<Guid> _categories = [];
 
+    
+    // Ef core
+    private Product(){}
+    
     public Product(Guid id, string name, string description, decimal price, int stock, decimal discount = 0)
     {
         #region constraints
 
+        /*
         if (Guid.Empty.Equals(id))
         {
             throw new ArgumentException(null, nameof(id));
         }
+        */
 
         if (string.IsNullOrWhiteSpace(name))
         {
